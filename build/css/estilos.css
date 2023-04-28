@@ -1,0 +1,26 @@
+.modal-content {
+  background: linear-gradient(to bottom, #34383d, #395775);
+  border: 1px solid linear-gradient(to bottom, #34383d, #395775);
+  border-radius: 40px;
+ 
+}
+p{
+  color: rgb(255, 255, 255);
+  text-align: justify;
+  font-family: "Verdana"
+
+}
+.modal-title{
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-family: "Verdana"
+}
+.modal-body{
+  color: rgb(255, 255, 255);
+
+  font-family: "Verdana"
+}
+
+
+
+
