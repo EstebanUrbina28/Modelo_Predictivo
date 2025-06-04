@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2022 a las 04:41:26
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 04-06-2025 a las 23:35:51
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,39 @@ CREATE TABLE `estudiante` (
   `año_saber11` varchar(50) NOT NULL,
   `id_notas` varchar(50) NOT NULL,
   `id_usuario` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notas_lec`
+--
+
+CREATE TABLE `notas_lec` (
+  `id` int(11) NOT NULL,
+  `com_oral1` int(11) DEFAULT NULL,
+  `com_orl2` int(11) DEFAULT NULL,
+  `com_orl3` int(11) DEFAULT NULL,
+  `resultado` int(11) NOT NULL,
+  `jornada` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `notas_lec`
+--
+
+INSERT INTO `notas_lec` (`id`, `com_oral1`, `com_orl2`, `com_orl3`, `resultado`, `jornada`) VALUES
+(1, 4, 4, 4, 4, 'Noctura'),
+(2, 4, 3, 3, 5, 'Diruna'),
+(3, 5, 2, 3, 3, 'Noctura'),
+(4, 1, 2, 3, 1, 'Diruna'),
+(5, 2, 4, 3, 1, 'Noctura'),
+(6, 5, 3, 4, 2, 'Diruna'),
+(7, 0, 5, 5, 4, 'Noctura'),
+(8, 1, 5, 4, 3, 'Noctura'),
+(9, 1, 5, 1, 1, 'Diruna'),
+(10, 1, 5, 4, 2, 'Diruna'),
+(11, 1, 4, 1, 2, 'Diruna');
 
 -- --------------------------------------------------------
 
@@ -45,24 +77,28 @@ CREATE TABLE `estudiante` (
 
 CREATE TABLE `notas_mat` (
   `id` int(11) NOT NULL,
-  `cal_dif` varchar(50) NOT NULL,
-  `cal_dif2` varchar(50) NOT NULL,
-  `mate_dis` varchar(50) NOT NULL,
-  `cal_saber11` int(10) NOT NULL,
-  `año_lec` varchar(100) NOT NULL,
-  `semestre` int(10) NOT NULL,
-  `jornada` varchar(20) NOT NULL,
-  `años_saber11` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `mat_basc3` int(11) DEFAULT NULL,
+  `mat_disc1` int(11) DEFAULT NULL,
+  `cal_difc2` int(11) DEFAULT NULL,
+  `mat_dis2c1` int(11) DEFAULT NULL,
+  `algc1` int(11) DEFAULT NULL,
+  `cinc1` int(11) DEFAULT NULL,
+  `resultado` int(11) DEFAULT NULL,
+  `jornada` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `notas_mat`
 --
 
-INSERT INTO `notas_mat` (`id`, `cal_dif`, `cal_dif2`, `mate_dis`, `cal_saber11`, `año_lec`, `semestre`, `jornada`, `años_saber11`) VALUES
-(1, '2', '1', '3', 2, '2021', 1, 'Diurna', '2021'),
-(2, '3', '4', '1', 3, '2021', 1, 'Diurna', '2021'),
-(3, '3', '4', '1', 3, '2021', 1, 'Diurna', '2021');
+INSERT INTO `notas_mat` (`id`, `mat_basc3`, `mat_disc1`, `cal_difc2`, `mat_dis2c1`, `algc1`, `cinc1`, `resultado`, `jornada`) VALUES
+(1, 4, 4, 4, 4, 4, 4, 4, 'Diurna'),
+(2, 4, 4, 4, 4, 4, 4, 4, 'Nocturna'),
+(3, 4, 4, 4, 4, 4, 4, 4, 'Nocturna'),
+(4, 5, 2, 4, 4, 1, 1, 2, 'Nocturna'),
+(5, 4, 4, 4, 4, 4, 4, 4, 'Diurna'),
+(6, 5, 2, 4, 4, 1, 1, 2, 'Diurna'),
+(7, 3, 1, 5, 4, 1, 1, 2, 'Nocturna');
 
 -- --------------------------------------------------------
 
@@ -75,20 +111,14 @@ CREATE TABLE `usuarios` (
   `nombres` varchar(200) NOT NULL,
   `correo` varchar(200) NOT NULL,
   `contraseña` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `correo`, `contraseña`) VALUES
-(1, 'Esteban Urbina', 'esteban1994@hotmail.com', '1234'),
-(2, 'MONICA BBRAVO', 'monica@gmail.com', '1234'),
-(3, 'Esteban Urbina', 'esteban@hotmail.com', '1000'),
-(4, 'JULIANA ', 'JULI200@HOTMAIL.COM', '100'),
-(5, 'JULIANA  urbina', 'JULI200@HOTMAIL.COM', '100'),
-(6, 'JULIANA  urbina', 'JULI200@HOTMAIL.COM', '100'),
-(7, 'juliana', 'esteban@hotmail.com', '1000');
+(1, 'Esteban Urbina', 'esteban1994@hotmail.com', '1234');
 
 --
 -- Índices para tablas volcadas
@@ -98,6 +128,12 @@ INSERT INTO `usuarios` (`id`, `nombres`, `correo`, `contraseña`) VALUES
 -- Indices de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `notas_lec`
+--
+ALTER TABLE `notas_lec`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -123,10 +159,16 @@ ALTER TABLE `estudiante`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `notas_lec`
+--
+ALTER TABLE `notas_lec`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT de la tabla `notas_mat`
 --
 ALTER TABLE `notas_mat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
